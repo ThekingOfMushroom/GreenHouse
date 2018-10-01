@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.leon.mapper.CategoryMapper">
+	    <insert id="add" parameterType="Category" >
+	        insert into sensor ( id ) values (#{id})    
+	    </insert>
+	    
+	    <delete id="delete" parameterType="Category" >
+	        delete from sensor where id= #{id}   
+	    </delete>
+	    
+	    <select id="get" parameterType="_int" resultType="Category">
+	        select * from   sensor  where id= #{id}    
+	    </select>
+
+	    <update id="update" parameterType="Category" >
+	        update sensor set name=#{name} where id=#{id}    
+	    </update>
+	    <select id="list" resultType="Category">
+	        select * from sensor where to_days(date)=to_days(now())    
+	    </select>
+	    <select id="lists" resultType="Category">
+	    	select * from sensor where date_sub(curdate(), interval 7 day) &lt;= date(date)
+	    </select>	    
+	</mapper>
+
